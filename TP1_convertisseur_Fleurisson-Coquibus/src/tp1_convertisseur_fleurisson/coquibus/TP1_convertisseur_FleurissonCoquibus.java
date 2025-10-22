@@ -75,7 +75,7 @@ public class TP1_convertisseur_FleurissonCoquibus {
         System.out.println("5) Kelvin vers Fahrenheit");
         System.out.println("6) Fahrenheit vers Kelvin");
         
-        System.out.print("Choisissez votre methode : ");
+        System.out.print("Choisissez votre conversion : ");
         int choix = sc.nextInt();
 
         System.out.print("Entrez la temperature a convertir : ");
