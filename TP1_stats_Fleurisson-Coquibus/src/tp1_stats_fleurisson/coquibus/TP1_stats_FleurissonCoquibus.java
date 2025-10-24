@@ -11,7 +11,7 @@ import java.util.Scanner;
 Nom du programme : stats
 Auteur : Maxence Fleurisson-Coquibus
 Role : Familiarisation avec l'environnement
-Date : 20/10/2025
+Date : 24/10/2025
  */
 public class TP1_stats_FleurissonCoquibus {
 
