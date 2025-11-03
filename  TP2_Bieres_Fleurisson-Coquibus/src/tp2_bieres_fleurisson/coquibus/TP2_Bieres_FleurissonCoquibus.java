@@ -17,8 +17,15 @@ public class TP2_Bieres_FleurissonCoquibus {
     public static void main(String[] args) {
         // TODO code application logic here
         BouteilleBiere uneBiere = new BouteilleBiere("Cuvee des trolls", 7.0f, "Dubuisson");
+        BouteilleBiere deuxBiere = new BouteilleBiere("Kamehameha", 15.0f, "Namek");
+        BouteilleBiere troisBiere = new BouteilleBiere("Smeagel", 8.0f, "Mordor");
+        BouteilleBiere quatreBiere = new BouteilleBiere("Eau", 80.0f, "Pacific");
         uneBiere.lireEtiquette();
+        deuxBiere.lireEtiquette();
+        troisBiere.lireEtiquette();
+        quatreBiere.lireEtiquette();
         uneBiere.decapsuler();
+        troisBiere.decapsuler();
     }
     
 }
