@@ -23,6 +23,6 @@ public class TP2_convertisseurObjet_FleurissonCoquibus {
         double tempF = conv1.CelciusVersFarenheit(tempC);
         System.out.println(tempC + "°C = " + tempF + " °F");
 
-        System.out.println(conv1); // affiche le nombre de conversions
+        System.out.println(conv1); 
     }
 }
