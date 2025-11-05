@@ -9,10 +9,11 @@ package tp2_relation_1_fleurisson.coquibus;
  * @author maxen
  */
 public class Personne {
+
     String nom;
     String prenom;
     Voiture[] listeVoitures;
-    int nbVoitures; 
+    int nbVoitures;
 
     public Personne(String unNom, String unPrenom) {
         nom = unNom;
@@ -26,13 +27,25 @@ public class Personne {
         return prenom + " " + nom;
     }
 
-    public void ajouterVoiture(Voiture v) {
-        if (nbVoitures < 3) {
-            listeVoitures[nbVoitures] = v;
-            nbVoitures++;
-            v.proprietaire = this; // lien bidirectionnel
-        } else {
-            System.out.println(prenom + " " + nom + " possède déjà 3 voitures !");
+    public boolean ajouterVoiture(Voiture voiture_a_ajouter) {
+        if (voiture_a_ajouter.proprietaire != null) {
+            System.out.println("Cette voiture appartient deja a "
+                    + voiture_a_ajouter.proprietaire.prenom + " "
+                    + voiture_a_ajouter.proprietaire.nom + " !");
+            return false;
         }
+
+        if (nbVoitures >= 3) {
+            System.out.println(prenom + " " + nom + " possede deja 3 voitures !");
+            return false;
+        }
+
+        listeVoitures[nbVoitures] = voiture_a_ajouter;
+        nbVoitures++;
+        voiture_a_ajouter.proprietaire = this;
+        return true;
     }
+
+}
+
 }

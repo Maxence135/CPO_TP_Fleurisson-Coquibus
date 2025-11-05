@@ -25,7 +25,7 @@ public class Voiture {
     public String toString() {
         String texte = modele + " (" + marque + ", " + puissanceCV + " CV)";
         if (proprietaire != null) {
-            texte += " - propriétaire : " + proprietaire.prenom + " " + proprietaire.nom;
+            texte += " - proprietaire : " + proprietaire.prenom + " " + proprietaire.nom;
         }
         return texte;
     }
