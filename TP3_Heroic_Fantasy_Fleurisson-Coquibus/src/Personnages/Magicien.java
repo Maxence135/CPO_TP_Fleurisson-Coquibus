@@ -2,7 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package tp3_heroic_fantasy_fleurisson.coquibus;
+package Personnages;
+
+import Armes.Arme;
+import Armes.Baton;
+import Personnages.Personnage;
 
 /**
  *
@@ -15,9 +19,14 @@ public class Magicien extends Personnage {
         super(nom, niveauVie);
         this.confirme = confirme;
     }
+    
+    protected boolean isArmedePredilection(Arme a){
+        return a instanceof Baton;
+    }
 
     @Override
     public String toString() {
         return super.toString() + ", confirme=" + confirme;
     }
+
 }

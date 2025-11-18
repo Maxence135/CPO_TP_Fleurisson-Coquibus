@@ -2,7 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package tp3_heroic_fantasy_fleurisson.coquibus;
+package Personnages;
+
+import Armes.Arme;
+import Armes.Epee;
+import Personnages.Personnage;
 
 /**
  *
@@ -15,10 +19,15 @@ public class Guerrier extends Personnage {
         super(nom, niveauVie);
         this.cheval = cheval;
     }
+    
+    protected boolean isArmedePredilection(Arme a){
+        return a instanceof Epee;
+    }
 
     @Override
     public String toString() {
-        return super.toString() + ", confirme=" + cheval;
+        return super.toString() + ", cheval=" + cheval;
     }
+
 }
 
