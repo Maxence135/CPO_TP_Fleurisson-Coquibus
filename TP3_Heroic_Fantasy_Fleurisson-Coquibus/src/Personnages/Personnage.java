@@ -6,12 +6,13 @@ package Personnages;
 
 import Armes.Arme;
 import java.util.ArrayList;
+import tp3_heroic_fantasy_fleurisson.coquibus.EtreVivant;
 
 /**
  *
  * @author maxen
  */
-public abstract class Personnage {
+public abstract class Personnage implements EtreVivant {
 
     protected String nom;
     protected int niveauVie;
@@ -100,8 +101,18 @@ public abstract class Personnage {
             super.finalize();
         }
     }
-
     
-    
-    
+    @Override
+    public void seFatiguer(){
+        this.niveauVie-=10;
+    }
+    @Override
+    public boolean estVivant(){
+        return this.niveauVie>0;
+    }
+    @Override
+    public void estAttaquer(int points){
+        this.niveauVie-=Math.max(0,points);
+    }
+  
 }
