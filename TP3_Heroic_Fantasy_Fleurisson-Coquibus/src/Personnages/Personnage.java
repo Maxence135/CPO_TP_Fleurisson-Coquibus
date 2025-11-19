@@ -89,7 +89,7 @@ public abstract class Personnage implements EtreVivant {
     
     public void attaquer(Personnage cible){
         if(!this.estVivant()){
-            System.out.println(nom + "deja KO");
+            System.out.println(nom + " deja KO");
             return;
         }
         if (!cible.estVivant()){

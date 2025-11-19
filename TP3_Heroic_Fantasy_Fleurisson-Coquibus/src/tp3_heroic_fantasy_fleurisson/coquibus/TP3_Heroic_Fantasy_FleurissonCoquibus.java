@@ -22,42 +22,46 @@ public class TP3_Heroic_Fantasy_FleurissonCoquibus {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Guerrier g = new Guerrier("Conan",80,false);
-        Magicien m = new Magicien("Gandalf",70,true);
-        
-        Baton b1 = new Baton(3,"Baton1",2);
-        Baton b2 = new Baton(4,"Baton2",3);
-        Baton b3 = new Baton(5,"Baton3",4);
-        
-        Epee e1 = new Epee(6,"Epee1",2);
-        Epee e2 = new Epee(7,"Epee2",3);
-        Epee e3 = new Epee(8,"Epee3",4);
-        
+        Guerrier g = new Guerrier("Archeon", 50000, true);
+        Magicien m = new Magicien("Mehdi", 120, false);
+
+        Baton b1 = new Baton(4, "Chene", 5);
+        Baton b2 = new Baton(5, "Charme", 6);
+
+        Epee e1 = new Epee(7, "Excalibur", 5);
+        Epee e2 = new Epee(4, "Durandal", 7);
+
         g.ajouterArme(e1);
-        g.ajouterArme(e2);
-        g.ajouterArme(e3);
-        
-        g.equiper("Epee1");
-        
-        m.ajouterArme(b1);
+        g.ajouterArme(b1);
+
+        g.equiper("Excalibur");
+
+        m.ajouterArme(e2);
         m.ajouterArme(b2);
-        m.ajouterArme(b3);
-        
-        m.equiper("Baton1");
-        
+
+        m.equiper("Charme");
+
         System.out.println("Arme de predilection du magicien " + m.compterArmesDePredilection());
         System.out.println("Arme de predilection du guerrier " + g.compterArmesDePredilection());
-        
+
         System.out.println("Personnages :");
         System.out.println(g);
         System.out.println(m);
-        
-        g.seFatiguer();
-        System.out.println(g + " | Vivant : " + g.estVivant());
-        
+
+        System.out.println("\n--- DEBUT DU COMBAT ---");
+
+        // Attaques
+        m.attaquer(g);
+        System.out.println(m);
+        System.out.println(g);
+
         g.attaquer(m);
         System.out.println(m);
         System.out.println(g);
-        
+
+        // Vérifier vivants
+        System.out.println("Mage vivant ? " + m.estVivant());
+        System.out.println("Warrior vivant ? " + g.estVivant());
+
     }
 }
