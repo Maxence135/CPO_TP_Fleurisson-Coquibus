@@ -18,10 +18,26 @@ public abstract class Personnage {
     protected ArrayList<Arme> inventaire = new ArrayList<>();
     protected Arme armeEnMain = null;
     protected abstract boolean isArmedePredilection(Arme a);
+    protected static int nbPersonnage = 0;
+    protected static int nbGuerrier = 0;
+    protected static int nbMagicien = 0;
+
+    public static int getNbPersonnage() {
+        return nbPersonnage;
+    }
+
+    public static int getNbGuerrier() {
+        return nbGuerrier;
+    }
+
+    public static int getNbMagicien() {
+        return nbMagicien;
+    }
 
     public Personnage(String nom, int niveauVie) {
         this.nom = nom;
         this.niveauVie = niveauVie;
+        nbPersonnage++;
     }
 
     public String getNom() {
@@ -74,6 +90,15 @@ public abstract class Personnage {
                 + ", niveauVie=" + niveauVie
                 + ", nbArmes=" + inventaire.size()
                 + '}';
+    }
+    
+    @Override
+    public void finalize()throws Throwable{
+        try{
+            nbPersonnage--;
+        } finally{
+            super.finalize();
+        }
     }
 
     

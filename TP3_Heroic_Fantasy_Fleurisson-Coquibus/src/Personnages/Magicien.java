@@ -18,6 +18,7 @@ public class Magicien extends Personnage {
     public Magicien(String nom, int niveauVie, boolean confirme) {
         super(nom, niveauVie);
         this.confirme = confirme;
+        nbMagicien++;
     }
     
     protected boolean isArmedePredilection(Arme a){
@@ -27,6 +28,15 @@ public class Magicien extends Personnage {
     @Override
     public String toString() {
         return super.toString() + ", confirme=" + confirme;
+    }
+    
+    @Override
+    public void finalize()throws Throwable{
+        try{
+            nbMagicien--;
+        } finally{
+            super.finalize();
+        }
     }
 
 }

@@ -18,6 +18,7 @@ public class Guerrier extends Personnage {
     public Guerrier(String nom, int niveauVie, boolean cheval) {
         super(nom, niveauVie);
         this.cheval = cheval;
+        nbGuerrier++;
     }
     
     protected boolean isArmedePredilection(Arme a){
@@ -27,6 +28,15 @@ public class Guerrier extends Personnage {
     @Override
     public String toString() {
         return super.toString() + ", cheval=" + cheval;
+    }
+ 
+    @Override
+    public void finalize()throws Throwable{
+        try{
+            nbGuerrier--;
+        } finally{
+            super.finalize();
+        }
     }
 
 }
