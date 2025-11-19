@@ -92,7 +92,7 @@ public abstract class Personnage implements EtreVivant {
         }
         int degats = calculerDegats();
         cible.estAttaquer(degats);
-        System.out.println(nom + " attaque " + cible.nom + " lui inflige " + degats + " degats ");
+        System.out.println(nom + " attaque " + cible.nom + " et lui inflige " + degats + " degats ");
     }
 
     @Override

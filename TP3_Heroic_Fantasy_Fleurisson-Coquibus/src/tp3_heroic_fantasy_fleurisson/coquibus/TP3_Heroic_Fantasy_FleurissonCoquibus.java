@@ -46,10 +46,18 @@ public class TP3_Heroic_Fantasy_FleurissonCoquibus {
         m.equiper("Baton1");
         
         System.out.println("Arme de predilection du magicien " + m.compterArmesDePredilection());
+        System.out.println("Arme de predilection du guerrier " + g.compterArmesDePredilection());
         
         System.out.println("Personnages :");
         System.out.println(g);
         System.out.println(m);
+        
+        g.seFatiguer();
+        System.out.println(g + " | Vivant : " + g.estVivant());
+        
+        g.attaquer(m);
+        System.out.println(m);
+        System.out.println(g);
         
     }
 }
