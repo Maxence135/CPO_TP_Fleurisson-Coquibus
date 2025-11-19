@@ -44,4 +44,9 @@ public class Magicien extends Personnage {
         return 20;
     }
 
+    public boolean isConfirme() {
+        return confirme;
+    }
+    
+
 }

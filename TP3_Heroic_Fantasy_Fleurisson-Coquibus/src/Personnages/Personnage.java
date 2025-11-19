@@ -5,6 +5,8 @@
 package Personnages;
 
 import Armes.Arme;
+import Armes.Baton;
+import Armes.Epee;
 import java.util.ArrayList;
 import tp3_heroic_fantasy_fleurisson.coquibus.EtreVivant;
 
@@ -87,12 +89,32 @@ public abstract class Personnage implements EtreVivant {
     
     public void attaquer(Personnage cible){
         if(!this.estVivant()){
-            System.out.println("deja KO");
+            System.out.println(nom + "deja KO");
             return;
         }
+        if (!cible.estVivant()){
+            System.out.println(cible.nom + " deja KO ");
+        }
         int degats = calculerDegats();
+        if(armeEnMain != null){
+            degats *= armeEnMain.getNiveauAttaque();
+        }
+        if(this instanceof Magicien && armeEnMain instanceof Baton){
+            degats *= ((Baton)armeEnMain).getAge();
+            this.seFatiguer();
+        }
+        if(this instanceof Guerrier && armeEnMain instanceof Epee){
+            degats *= ((Epee)armeEnMain).getFinesse();
+            this.seFatiguer();
+        }
+        if(this instanceof Magicien && ((Magicien)this).isConfirme()){
+            degats /= 2;
+        }
+        if(this instanceof Guerrier && ((Guerrier)this).isCheval()){
+            degats /= 2;
+        }
         cible.estAttaquer(degats);
-        System.out.println(nom + " attaque " + cible.nom + " et lui inflige " + degats + " degats ");
+        System.out.println(nom + " attaque " + cible.nom + " et inflige " + degats + " degats");
     }
 
     @Override

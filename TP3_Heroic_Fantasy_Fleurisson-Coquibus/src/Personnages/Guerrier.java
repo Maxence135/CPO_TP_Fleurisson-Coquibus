@@ -44,5 +44,10 @@ public class Guerrier extends Personnage {
         return 30;
     }
 
+    public boolean isCheval() {
+        return cheval;
+    }
+    
+
 }
 
