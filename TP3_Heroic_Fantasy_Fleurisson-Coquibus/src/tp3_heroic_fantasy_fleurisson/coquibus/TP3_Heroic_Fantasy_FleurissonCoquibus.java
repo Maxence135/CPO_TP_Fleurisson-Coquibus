@@ -6,11 +6,8 @@ package tp3_heroic_fantasy_fleurisson.coquibus;
 
 import Personnages.Guerrier;
 import Personnages.Magicien;
-import Personnages.Personnage;
 import Armes.Epee;
 import Armes.Baton;
-import Armes.Arme;
-import java.util.ArrayList;
 
 /*
 Nom du programme : Heroic Fantasy
@@ -48,7 +45,7 @@ public class TP3_Heroic_Fantasy_FleurissonCoquibus {
         
         m.equiper("Baton1");
         
-        System.out.println("Arme de prédilection du magicien" + m.compterArmesDePredilection());
+        System.out.println("Arme de predilection du magicien " + m.compterArmesDePredilection());
         
         System.out.println("Personnages :");
         System.out.println(g);
