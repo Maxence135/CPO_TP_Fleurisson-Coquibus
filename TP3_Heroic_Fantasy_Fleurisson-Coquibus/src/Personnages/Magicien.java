@@ -38,5 +38,10 @@ public class Magicien extends Personnage {
             super.finalize();
         }
     }
+    
+    @Override
+    protected int calculerDegats(){
+        return 20;
+    }
 
 }

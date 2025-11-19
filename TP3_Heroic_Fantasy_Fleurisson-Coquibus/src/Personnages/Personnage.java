@@ -22,6 +22,7 @@ public abstract class Personnage implements EtreVivant {
     protected static int nbPersonnage = 0;
     protected static int nbGuerrier = 0;
     protected static int nbMagicien = 0;
+    protected abstract int calculerDegats();
 
     public static int getNbPersonnage() {
         return nbPersonnage;
@@ -82,6 +83,16 @@ public abstract class Personnage implements EtreVivant {
             }
         }
         return c;
+    }
+    
+    public void attaquer(Personnage cible){
+        if(!this.estVivant()){
+            System.out.println("deja KO");
+            return;
+        }
+        int degats = calculerDegats();
+        cible.estAttaquer(degats);
+        System.out.println(nom + " attaque " + cible.nom + " lui inflige " + degats + " degats ");
     }
 
     @Override
