@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 import java.util.Collections;
+import javax.swing.Timer;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -17,6 +18,8 @@ public class FenetreQuiz extends javax.swing.JFrame {
     private ArrayList<Question> listeQuestions = new ArrayList<>();
     private int indexQuestionCourante = 0;
     private int score = 0;
+    private int TempsRestant = 10;
+    private Timer Chronometre;
 
     /**
      * Creates new form FenetreQuiz
@@ -24,6 +27,7 @@ public class FenetreQuiz extends javax.swing.JFrame {
     public FenetreQuiz() {
         initComponents();
         lblScore.setText("Score : " + score);
+        btnSuivant.setText("Suivant");
         //Questions :
         listeQuestions.add(new Question(
                 "Quelle est la capitale de la France ?",
@@ -150,17 +154,36 @@ public class FenetreQuiz extends javax.swing.JFrame {
 
         lblQuestion.setText(q.getIntitule());
 
-        btnRep1.setText(q.getProposition1());
-        btnRep2.setText(q.getProposition2());
-        btnRep3.setText(q.getProposition3());
-        btnRep4.setText(q.getProposition4());
-
         btnRep1.setEnabled(true);
         btnRep2.setEnabled(true);
         btnRep3.setEnabled(true);
         btnRep4.setEnabled(true);
 
         lblFeedBack.setVisible(false);
+
+        //Chronometre :
+        TempsRestant = 10;
+        lblChrono.setText("Temps : " + TempsRestant + "s");
+
+        if (Chronometre != null) {
+            Chronometre.stop();
+        }
+
+        Chronometre = new Timer(1000, (e) -> {
+            TempsRestant--;
+            lblChrono.setText("Temps : " + TempsRestant + "s");
+
+            if (TempsRestant <= 0) {
+                Chronometre.stop();
+                lblFeedBack.setText("Temps écoulé");
+                btnRep1.setEnabled(false);
+                btnRep2.setEnabled(false);
+                btnRep3.setEnabled(false);
+                btnRep4.setEnabled(false);
+            }
+        });
+        Chronometre.start();
+
     }
 
     private void verifierReponse(int numChoisi) {
@@ -232,6 +255,7 @@ public class FenetreQuiz extends javax.swing.JFrame {
         lblFeedBack = new javax.swing.JLabel();
         lblScore = new javax.swing.JLabel();
         btnSuivant = new javax.swing.JButton();
+        lblChrono = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -285,6 +309,9 @@ public class FenetreQuiz extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSuivant, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
+
+        lblChrono.setText("jLabel1");
+        getContentPane().add(lblChrono, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -362,6 +389,7 @@ public class FenetreQuiz extends javax.swing.JFrame {
     private javax.swing.JButton btnRep3;
     private javax.swing.JButton btnRep4;
     private javax.swing.JButton btnSuivant;
+    private javax.swing.JLabel lblChrono;
     private javax.swing.JLabel lblFeedBack;
     private javax.swing.JLabel lblQuestion;
     private javax.swing.JLabel lblScore;
