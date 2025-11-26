@@ -129,8 +129,8 @@ public class FenetreQuiz extends javax.swing.JFrame {
                 "Fer", "Fluor", "Francium", "Fermium",
                 1));
 
-        afficherQuestionCourante();
         Collections.shuffle(listeQuestions);
+        afficherQuestionCourante();
 
     }
 
