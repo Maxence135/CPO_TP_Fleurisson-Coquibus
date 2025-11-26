@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -49,13 +50,103 @@ public class FenetreQuiz extends javax.swing.JFrame {
                 "4", "5", "6", "7",
                 4));
 
+        listeQuestions.add(new Question(
+                "Quelle planète est la plus proche du Soleil ?",
+                "Venus", "Mercure", "Mars", "Terre",
+                2));
+
+        listeQuestions.add(new Question(
+                "Quel est le plus grand océan de la Terre ?",
+                "Atlantique", "Arctique", "Pacifique", "Indien",
+                3));
+
+        listeQuestions.add(new Question(
+                "Quel est le symbole chimique de l'eau ?",
+                "O2", "H2O", "CO2", "HO",
+                2));
+
+        listeQuestions.add(new Question(
+                "Qui a peint la Joconde ?",
+                "Van Gogh", "Picasso", "Léonard de Vinci", "Monet",
+                3));
+
+        listeQuestions.add(new Question(
+                "En quelle année l'homme a-t-il marché sur la Lune ?",
+                "1969", "1959", "1979", "1982",
+                1));
+
+        listeQuestions.add(new Question(
+                "Combien de côtés a un hexagone ?",
+                "5", "6", "7", "8",
+                2));
+
+        listeQuestions.add(new Question(
+                "Qui est l'auteur de 'Le Petit Prince' ?",
+                "Jules Verne", "Victor Hugo", "Molière", "Antoine de Saint-Exupéry",
+                4));
+
+        listeQuestions.add(new Question(
+                "Quelle est la capitale de l'Espagne ?",
+                "Madrid", "Barcelone", "Séville", "Valence",
+                1));
+
+        listeQuestions.add(new Question(
+                "Quel est le plus grand animal vivant sur Terre ?",
+                "Éléphant", "Baleine bleue", "Girafe", "Orque",
+                2));
+
+        listeQuestions.add(new Question(
+                "Dans quel pays se trouve la Tour de Pise ?",
+                "Italie", "Espagne", "France", "Portugal",
+                1));
+
+        listeQuestions.add(new Question(
+                "Combien y a-t-il de secondes dans 1 minute ?",
+                "30", "45", "60", "90",
+                3));
+
+        listeQuestions.add(new Question(
+                "Quel est le langage utilisé principalement pour le développement Android ?",
+                "C#", "Kotlin", "Swift", "Ruby",
+                2));
+
+        listeQuestions.add(new Question(
+                "Quel est le résultat de 12 ÷ 3 ?",
+                "3", "4", "6", "9",
+                2));
+
+        listeQuestions.add(new Question(
+                "Quel est le plus grand désert du monde ?",
+                "Sahara", "Gobi", "Antarctique", "Kalahari",
+                3));
+
+        listeQuestions.add(new Question(
+                "Quel est l’élément chimique dont le symbole est ‘Fe’ ?",
+                "Fer", "Fluor", "Francium", "Fermium",
+                1));
+
         afficherQuestionCourante();
+        Collections.shuffle(listeQuestions);
 
     }
 
     private void afficherQuestionCourante() {
 
         Question q = listeQuestions.get(indexQuestionCourante);
+
+        ArrayList<String> propositions = new ArrayList<>();
+
+        propositions.add(q.getProposition1());
+        propositions.add(q.getProposition2());
+        propositions.add(q.getProposition3());
+        propositions.add(q.getProposition4());
+
+        Collections.shuffle(propositions);
+
+        btnRep1.setText(propositions.get(0));
+        btnRep2.setText(propositions.get(1));
+        btnRep3.setText(propositions.get(2));
+        btnRep4.setText(propositions.get(3));
 
         lblQuestion.setText(q.getIntitule());
 
@@ -77,7 +168,39 @@ public class FenetreQuiz extends javax.swing.JFrame {
         Question q = listeQuestions.get(indexQuestionCourante);
         lblFeedBack.setVisible(true);
 
-        if (numChoisi == q.getIndexBonneReponse()) {
+        String bonne = "";
+
+        switch (q.getIndexBonneReponse()) {
+            case 1:
+                bonne = q.getProposition1();
+                break;
+            case 2:
+                bonne = q.getProposition2();
+                break;
+            case 3:
+                bonne = q.getProposition3();
+                break;
+            case 4:
+                bonne = q.getProposition4();
+                break;
+        }
+
+        String texteChoisi = "";
+
+        if (numChoisi == 1) {
+            texteChoisi = btnRep1.getText();
+        }
+        if (numChoisi == 2) {
+            texteChoisi = btnRep2.getText();
+        }
+        if (numChoisi == 3) {
+            texteChoisi = btnRep3.getText();
+        }
+        if (numChoisi == 4) {
+            texteChoisi = btnRep4.getText();
+        }
+
+        if (texteChoisi.equals(bonne)) {
             lblFeedBack.setText("Bonne réponse");
             score++;
         } else {
@@ -189,22 +312,22 @@ public class FenetreQuiz extends javax.swing.JFrame {
     private void btnSuivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuivantActionPerformed
         // TODO add your handling code here:
         btnSuivant.setText("Suivant");
-        indexQuestionCourante ++;
-   
-    if (indexQuestionCourante < listeQuestions.size()) {
+        indexQuestionCourante++;
 
-        afficherQuestionCourante();
+        if (indexQuestionCourante < listeQuestions.size()) {
 
-    } else {
+            afficherQuestionCourante();
 
-        lblFeedBack.setText("Quiz terminé. Score : " + score + " / " + listeQuestions.size());
+        } else {
 
-        btnSuivant.setEnabled(false);
+            lblFeedBack.setText("Quiz terminé. Score : " + score + " / " + listeQuestions.size());
 
-        btnRep1.setEnabled(false);
-        btnRep2.setEnabled(false);
-        btnRep3.setEnabled(false);
-        btnRep4.setEnabled(false);
+            btnSuivant.setEnabled(false);
+
+            btnRep1.setEnabled(false);
+            btnRep2.setEnabled(false);
+            btnRep3.setEnabled(false);
+            btnRep4.setEnabled(false);
         }
     }//GEN-LAST:event_btnSuivantActionPerformed
 
