@@ -237,6 +237,8 @@ public class FenetreQuiz extends javax.swing.JFrame {
 
         lblScore.setText("Score : " + score);
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -342,6 +344,7 @@ public class FenetreQuiz extends javax.swing.JFrame {
         // TODO add your handling code here:
         btnSuivant.setText("Suivant");
         indexQuestionCourante++;
+        
 
         if (indexQuestionCourante < listeQuestions.size()) {
 
