@@ -260,7 +260,7 @@ public class FenetreQuiz extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblQuestion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblQuestion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblQuestion.setText("jLabel1");
         getContentPane().add(lblQuestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, -1, -1));
 
@@ -300,6 +300,7 @@ public class FenetreQuiz extends javax.swing.JFrame {
         getContentPane().add(lblFeedBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
 
         lblScore.setText("jLabel1");
+        lblScore.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(lblScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         btnSuivant.setText("jButton1");
@@ -311,6 +312,7 @@ public class FenetreQuiz extends javax.swing.JFrame {
         getContentPane().add(btnSuivant, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
 
         lblChrono.setText("jLabel1");
+        lblChrono.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(102, 0, 0)));
         getContentPane().add(lblChrono, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, -1, -1));
 
         pack();
