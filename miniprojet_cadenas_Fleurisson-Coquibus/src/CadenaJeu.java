@@ -8,5 +8,18 @@
  * @author maxen
  */
 public class CadenaJeu {
+    private int[] combinaisonSecrete = new int[4];
+    private int tentatives = 0;
+    private int maxTentatives = 5;
+    public CadenaJeu(){
+        genererCombinaison();
+    }
+    
+    //La methode creation de la combinaison
+    public void genererCombinaison(){
+        for(int i=0; i<4; i++){
+            combinaisonSecrete[i]=(int)(Math.random()*10);
+        }
+    }
     
 }
