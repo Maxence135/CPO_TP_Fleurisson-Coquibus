@@ -8,8 +8,10 @@
  * @author maxen
  */
 public class FenetreCadena extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FenetreCadena.class.getName());
+
+    private CadenaJeu jeu = new CadenaJeu();
 
     /**
      * Creates new form FenetreCadena
@@ -200,42 +202,107 @@ public class FenetreCadena extends javax.swing.JFrame {
 
     private void bouton_recommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_recommencerActionPerformed
         // TODO add your handling code here:
+        jeu.reset();
+
+        texte_chiffre_1.setText("0");
+        texte_chiffre_2.setText("0");
+        texte_chiffre_3.setText("0");
+        texte_chiffre_4.setText("0");
+
+        texte_nb_chiffres_exacts.setText("0");
+        texte_nb_chiffres_haut.setText("0");
+        texte_nb_chiffres_bas.setText("0");
+
+        texte_score.setText("0 sur 5");
+
+        bouton_tester.setEnabled(true);
+        texte_fin.setEnabled(false);
     }//GEN-LAST:event_bouton_recommencerActionPerformed
 
     private void up_chiffre_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre_4ActionPerformed
         // TODO add your handling code here:
+        int val = Integer.parseInt(texte_chiffre_4.getText());
+        val = (val + 1) % 10;
+        texte_chiffre_4.setText("" + val);
     }//GEN-LAST:event_up_chiffre_4ActionPerformed
 
     private void up_chiffre_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre_1ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:                                      
+        int val = Integer.parseInt(texte_chiffre_1.getText());
+        val = (val + 1) % 10;
+        texte_chiffre_1.setText("" + val);
     }//GEN-LAST:event_up_chiffre_1ActionPerformed
 
     private void up_chiffre_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre_2ActionPerformed
         // TODO add your handling code here:
+        int val = Integer.parseInt(texte_chiffre_2.getText());
+        val = (val + 1) % 10;
+        texte_chiffre_2.setText("" + val);
     }//GEN-LAST:event_up_chiffre_2ActionPerformed
 
     private void up_chiffre_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre_3ActionPerformed
         // TODO add your handling code here:
+        int val = Integer.parseInt(texte_chiffre_3.getText());
+        val = (val + 1) % 10;
+        texte_chiffre_3.setText("" + val);
     }//GEN-LAST:event_up_chiffre_3ActionPerformed
 
     private void down_chiffre_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre_1ActionPerformed
         // TODO add your handling code here:
+        int val = Integer.parseInt(texte_chiffre_1.getText());
+        val = (val + 9) % 10;
+        texte_chiffre_1.setText("" + val);
     }//GEN-LAST:event_down_chiffre_1ActionPerformed
 
     private void down_chiffre_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre_2ActionPerformed
         // TODO add your handling code here:
+        int val = Integer.parseInt(texte_chiffre_2.getText());
+        val = (val + 9) % 10;
+        texte_chiffre_2.setText("" + val);
     }//GEN-LAST:event_down_chiffre_2ActionPerformed
 
     private void down_chiffre_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre_3ActionPerformed
         // TODO add your handling code here:
+        int val = Integer.parseInt(texte_chiffre_3.getText());
+        val = (val + 9) % 10;
+        texte_chiffre_3.setText("" + val);
     }//GEN-LAST:event_down_chiffre_3ActionPerformed
 
     private void down_chiffre_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre_4ActionPerformed
         // TODO add your handling code here:
+        int val = Integer.parseInt(texte_chiffre_4.getText());
+        val = (val + 9) % 10;
+        texte_chiffre_4.setText("" + val);
     }//GEN-LAST:event_down_chiffre_4ActionPerformed
 
     private void bouton_testerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_testerActionPerformed
         // TODO add your handling code here:
+        int[] essai = new int[4];
+        essai[0] = Integer.parseInt(texte_chiffre_1.getText());
+        essai[1] = Integer.parseInt(texte_chiffre_2.getText());
+        essai[2] = Integer.parseInt(texte_chiffre_3.getText());
+        essai[3] = Integer.parseInt(texte_chiffre_4.getText());
+
+        Resultat r = jeu.test(essai);
+
+        texte_nb_chiffres_exacts.setText("" + r.exact);
+        texte_nb_chiffres_haut.setText("" + r.haut);
+        texte_nb_chiffres_bas.setText("" + r.bas);
+
+        texte_score.setText(jeu.getTentative() + " sur 5");
+        //si le jeu est fini je bloque le bouton
+        if(r.exact == 4){
+            texte_fin.setEnabled(true);
+            texte_fin.setText("Vous avez gagné");
+            bouton_tester.setEnabled(false);
+            return;
+        }
+        if (jeu.isFini()) {
+            texte_fin.setEnabled(true);
+            texte_fin.setText("Vous avez perdu");
+            bouton_tester.setEnabled(false);
+            return;
+        }
     }//GEN-LAST:event_bouton_testerActionPerformed
 
     /**
