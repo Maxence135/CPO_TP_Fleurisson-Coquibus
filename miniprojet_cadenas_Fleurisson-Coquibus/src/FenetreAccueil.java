@@ -17,6 +17,9 @@ public class FenetreAccueil extends javax.swing.JFrame {
     public FenetreAccueil() {
         initComponents();
     }
+    public void run(){
+        new FenetreAccueil().setVisible(true);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,10 +64,14 @@ public class FenetreAccueil extends javax.swing.JFrame {
 
     private void bouton_jouerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_jouerActionPerformed
         // TODO add your handling code here:
+        FenetreCadena jeu = new FenetreCadena();
+        jeu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bouton_jouerActionPerformed
 
     private void bouton_quitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_quitterActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_bouton_quitterActionPerformed
 
     /**
