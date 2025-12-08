@@ -12,8 +12,8 @@ public class CadenaJeu {
     private int[] combinaisonSecrete = new int[4];
     private int tentatives = 0;
     private int maxTentatives = 5;
-
-    public CadenaJeu() {
+    
+    public CadenaJeu(){
         genererCombinaison();
     }
 
@@ -57,4 +57,6 @@ public class CadenaJeu {
         tentatives =0;
         genererCombinaison();
     }
+    
+    
 }
