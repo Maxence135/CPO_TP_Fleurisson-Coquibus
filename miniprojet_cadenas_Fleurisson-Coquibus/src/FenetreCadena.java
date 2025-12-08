@@ -18,6 +18,7 @@ public class FenetreCadena extends javax.swing.JFrame {
      */
     public FenetreCadena() {
         initComponents();
+        texte_fin.setText("");
     }
 
     /**
@@ -216,7 +217,7 @@ public class FenetreCadena extends javax.swing.JFrame {
         texte_score.setText("0 sur 5");
 
         bouton_tester.setEnabled(true);
-        texte_fin.setEnabled(false);
+        texte_fin.setText("");
     }//GEN-LAST:event_bouton_recommencerActionPerformed
 
     private void up_chiffre_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre_4ActionPerformed
